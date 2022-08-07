@@ -92,7 +92,7 @@ const App = () => {
                 css`
                   overflow: hidden;
                   overflow-y: auto;
-                  max-height: 40rem;
+                  max-height: 30rem;
                   @media (max-width: 768px) {
                     max-height: initial;
                   }

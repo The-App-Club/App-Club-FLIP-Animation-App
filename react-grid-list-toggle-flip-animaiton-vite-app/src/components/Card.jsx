@@ -30,6 +30,7 @@ const Card = ({item, type}) => {
             <Flipped flipId={`${flipId}-content`} translate opacity>
               <div>
                 <h3>{item.semiTitle}</h3>
+                <img src={item.url} alt={''} width={120} />
                 <p>{item.description}</p>
               </div>
             </Flipped>
