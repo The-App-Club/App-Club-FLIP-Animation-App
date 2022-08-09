@@ -25,6 +25,7 @@ const motionConfig = {
 
 const FocusedItem = ({
   data,
+  searchTerm,
   matchedItemList,
   setMatchedItemList,
   focused,
@@ -54,6 +55,18 @@ const FocusedItem = ({
         controls.start('hidden');
       }}
     >
+      <div
+        className={css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 0.5rem;
+        `}
+      >
+        <b>SearchTerm</b>
+        <p>{searchTerm}</p>
+      </div>
       <ScrollContainer
         focused={focused}
         className={css`
@@ -83,7 +96,6 @@ const FocusedItem = ({
                     ...matchedItem,
                   },
                 });
-                // navigate routing
               }}
             >
               <Flipped flipId={`heading-${matchedItem.id}`}>

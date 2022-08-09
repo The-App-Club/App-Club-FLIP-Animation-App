@@ -10,13 +10,20 @@ import GridItem from './GridItem';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import {useNavigate} from 'react-router-dom';
 
 const Grid = () => {
   const [focused, setFocused] = useState(false);
   const [matchedItemList, setMatchedItemList] = useState([]);
-
-  const handleClick = useCallback((e, id) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigation = useNavigate();
+  const handleClick = useCallback((e, item) => {
     setFocused(true);
+    navigation('/product', {
+      state: {
+        ...item,
+      },
+    });
   }, []);
 
   useEffect(() => {
@@ -65,14 +72,16 @@ const Grid = () => {
             onChange={(e) => {
               const searchTerm = e.currentTarget.value;
               const searchResults = data.filter((item) => {
-                return searchTerm && item.title.match(searchTerm);
+                return searchTerm && item.title.indexOf(searchTerm) !== -1;
               });
+              console.log(searchResults);
               if (searchTerm) {
                 setFocused(true);
               } else {
                 setFocused(false);
               }
               setMatchedItemList(searchResults);
+              setSearchTerm(searchTerm);
             }}
           />
         </Box>
@@ -90,6 +99,7 @@ const Grid = () => {
         })}
         <FocusedItem
           data={data}
+          searchTerm={searchTerm}
           focused={focused}
           matchedItemList={matchedItemList}
           setMatchedItemList={setMatchedItemList}

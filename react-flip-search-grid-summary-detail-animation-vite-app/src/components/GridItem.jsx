@@ -5,7 +5,7 @@ const GridItem = ({item, index, handleClick}) => {
   return (
     <div
       onClick={(e) => {
-        handleClick(e, item.id);
+        handleClick(e, item);
       }}
       className={cx(css`
         border: 1px solid darkgray;
@@ -15,6 +15,9 @@ const GridItem = ({item, index, handleClick}) => {
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        :hover {
+          cursor: pointer;
+        }
         h2 {
           font-size: 1.2rem;
         }

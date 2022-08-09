@@ -37,8 +37,18 @@ const Layout = ({children, className}) => {
         `,
         className
       )}
-      onAnimationStart={(e) => {}}
-      onAnimationComplete={(e) => {}}
+      onAnimationStart={(e) => {
+        const html = document.documentElement;
+        const body = html.querySelector('body');
+        html.classList.add('loading');
+        body.classList.add('loading');
+      }}
+      onAnimationComplete={(e) => {
+        const html = document.documentElement;
+        const body = html.querySelector('body');
+        html.classList.remove('loading');
+        body.classList.remove('loading');
+      }}
     >
       {children}
     </motion.div>
