@@ -4,6 +4,7 @@ import {motion, useAnimationControls} from 'framer-motion';
 import {css, cx} from '@emotion/css';
 import {ScrollContainer} from './ScrollContainer';
 import {useNavigate} from 'react-router-dom';
+import Highlighter from 'react-highlight-words';
 
 const motionConfig = {
   initial: {
@@ -101,7 +102,20 @@ const FocusedItem = ({
               <Flipped flipId={`heading-${matchedItem.id}`}>
                 <div>
                   <Flipped inverseFlipId={`heading-${matchedItem.id}`} scale>
-                    <h2>{matchedItem.title}</h2>
+                    <h2>
+                      <Highlighter
+                        highlightClassName="bebop-highlight"
+                        searchWords={[searchTerm]}
+                        autoEscape={true}
+                        highlightTag={'span'}
+                        textToHighlight={matchedItem.title}
+                        className={css`
+                          .bebop-highlight {
+                            background: #ffd54f;
+                          }
+                        `}
+                      />
+                    </h2>
                   </Flipped>
                 </div>
               </Flipped>

@@ -74,7 +74,7 @@ const Grid = () => {
               const searchResults = data.filter((item) => {
                 return searchTerm && item.title.indexOf(searchTerm) !== -1;
               });
-              console.log(searchResults);
+              // console.log(searchResults);
               if (searchTerm) {
                 setFocused(true);
               } else {
