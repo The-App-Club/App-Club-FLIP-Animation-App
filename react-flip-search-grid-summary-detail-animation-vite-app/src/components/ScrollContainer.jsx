@@ -39,7 +39,7 @@ const ScrollContainer = ({focused, className, children}) => {
             grid-template-columns: repeat(2, 1fr);
           }
           gap: 1rem;
-          padding: 1rem;
+          padding: 3rem 1rem;
           border: 1px solid darkgray;
         `}
       >
