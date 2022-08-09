@@ -31,6 +31,7 @@ const FocusedItem = ({
   setMatchedItemList,
   focused,
   setFocused,
+  className = css``,
 }) => {
   const navigation = useNavigate();
   const controls = useAnimationControls();
@@ -40,16 +41,19 @@ const FocusedItem = ({
   }
   return (
     <div
-      className={css`
-        cursor: pointer;
-        background: #f7f7f7;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-      `}
+      className={cx(
+        css`
+          cursor: pointer;
+          background: #f7f7f7;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1;
+        `,
+        className
+      )}
       onClick={(e) => {
         setMatchedItemList([]);
         setFocused(false);

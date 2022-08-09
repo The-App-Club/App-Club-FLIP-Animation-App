@@ -11,6 +11,10 @@ import GridItem from './GridItem';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {useNavigate} from 'react-router-dom';
+import GridItemSp from './GridItemSp';
+import {FocusedItemSp} from './FocusedItemSp';
+import GridContainerSp from './GridContainerSp';
+import GridContainer from './GridContainer';
 
 const Grid = () => {
   const [focused, setFocused] = useState(false);
@@ -74,7 +78,6 @@ const Grid = () => {
               const searchResults = data.filter((item) => {
                 return searchTerm && item.title.indexOf(searchTerm) !== -1;
               });
-              // console.log(searchResults);
               if (searchTerm) {
                 setFocused(true);
               } else {
@@ -86,14 +89,46 @@ const Grid = () => {
           />
         </Box>
       </Flipped>
-      <ScrollContainer focused={focused}>
+      <GridContainer
+        data={data}
+        handleClick={handleClick}
+        searchTerm={searchTerm}
+        focused={focused}
+        matchedItemList={matchedItemList}
+        setMatchedItemList={setMatchedItemList}
+        setFocused={setFocused}
+      />
+      <GridContainerSp data={data} handleClick={handleClick} />
+      {/* <ScrollContainer focused={focused}>
         {data.map((item, index) => {
           return (
             <GridItem
-              key={index}
+              key={`${index}`}
               index={index}
               item={item}
               handleClick={handleClick}
+              className={css`
+                display: flex;
+                @media (max-width: 768px) {
+                  display: none;
+                }
+              `}
+            />
+          );
+        })}
+        {data.map((item, index) => {
+          return (
+            <GridItemSp
+              key={`${index}`}
+              index={index}
+              item={item}
+              handleClick={handleClick}
+              className={css`
+                display: none;
+                @media (max-width: 768px) {
+                  display: flex;
+                }
+              `}
             />
           );
         })}
@@ -104,8 +139,28 @@ const Grid = () => {
           matchedItemList={matchedItemList}
           setMatchedItemList={setMatchedItemList}
           setFocused={setFocused}
+          className={css`
+            display: block;
+            @media (max-width: 768px) {
+              display: none;
+            }
+          `}
         />
-      </ScrollContainer>
+      </ScrollContainer> */}
+      <FocusedItemSp
+        data={data}
+        searchTerm={searchTerm}
+        focused={focused}
+        matchedItemList={matchedItemList}
+        setMatchedItemList={setMatchedItemList}
+        setFocused={setFocused}
+        className={css`
+          display: none;
+          @media (max-width: 768px) {
+            display: block;
+          }
+        `}
+      />
     </Flipper>
   );
 };

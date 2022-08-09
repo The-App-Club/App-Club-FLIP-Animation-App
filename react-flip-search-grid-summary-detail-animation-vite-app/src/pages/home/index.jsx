@@ -16,6 +16,9 @@ const HomePage = () => {
           flex-direction: column;
           gap: 1rem;
           min-height: 100vh;
+          @media (max-width: 768px) {
+            padding-top: 1rem;
+          }
         `}
       >
         <h2>HomePage</h2>

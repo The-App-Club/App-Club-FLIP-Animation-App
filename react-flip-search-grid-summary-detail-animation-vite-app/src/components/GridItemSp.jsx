@@ -1,7 +1,7 @@
 import {css, cx} from '@emotion/css';
 import {memo} from 'react';
 import {Flipped} from 'react-flip-toolkit';
-const GridItem = ({item, index, handleClick, className = css``}) => {
+const GridItemSp = ({item, index, handleClick, className = css``}) => {
   return (
     <div
       onClick={(e) => {
@@ -27,7 +27,7 @@ const GridItem = ({item, index, handleClick, className = css``}) => {
       )}
     >
       <Flipped
-        flipId={`heading-${item.id}`}
+        flipId={`heading-${item.id}-sp`}
         // onStart={(e)=>{console.log(e)}}
         // onComplete={(e)=>{console.log(e)}}
         translate
@@ -35,7 +35,7 @@ const GridItem = ({item, index, handleClick, className = css``}) => {
         <h2>{item.title}</h2>
       </Flipped>
       <Flipped
-        flipId={`img-${item.id}`}
+        flipId={`img-${item.id}-sp`}
         // onStart={(e)=>{console.log(e)}}
         // onComplete={(e)=>{console.log(e)}}
         translate
@@ -46,4 +46,4 @@ const GridItem = ({item, index, handleClick, className = css``}) => {
   );
 };
 
-export default memo(GridItem);
+export default memo(GridItemSp);
