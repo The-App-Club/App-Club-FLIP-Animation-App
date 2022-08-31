@@ -1,0 +1,41 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  .loading {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+
+body {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.square {
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  background-image: linear-gradient(
+    45deg,
+    rgb(121, 113, 234),
+    rgb(97, 71, 182)
+  );
+}
+
+.full-screen-square {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, #fc4444, rgb(242, 123, 69));
+}
