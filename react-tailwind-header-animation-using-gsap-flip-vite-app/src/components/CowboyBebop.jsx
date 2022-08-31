@@ -4,6 +4,7 @@ import {Flip} from 'gsap/Flip';
 import {memo, useEffect, useRef, useState} from 'react';
 import {motion, useAnimationControls} from 'framer-motion';
 import logo from '../assets/logo.png';
+import {useNavigate} from 'react-router-dom';
 
 const motionConfig = {
   initial: {
@@ -87,6 +88,8 @@ const animateHeaderTitle = css`
 `;
 
 const CowboyBebop = ({fullScreen, notifier}) => {
+  const navigate = useNavigate();
+
   const headerTitleControls = useAnimationControls();
 
   const headerDomRef = useRef(null);
@@ -176,13 +179,18 @@ const CowboyBebop = ({fullScreen, notifier}) => {
     >
       <img
         ref={headerLogoDomRef}
-        className={initialHeaderLogo}
+        className={cx(initialHeaderLogo, `hover:cursor-pointer`)}
         src={logo}
         alt={'logo'}
+        onClick={(e) => {
+          navigate('/', {
+            state: {},
+          });
+        }}
       />
       <motion.h2
         ref={headerTitleDomRef}
-        className={initialHeaderTitle}
+        className={cx(initialHeaderTitle, `hover:cursor-pointer`)}
         variants={motionConfig}
         initial={'initial'}
         animate={headerTitleControls}
@@ -191,6 +199,11 @@ const CowboyBebop = ({fullScreen, notifier}) => {
           duration: 0.4,
           delay: 0.2,
           ease: 'easeInOut',
+        }}
+        onClick={(e) => {
+          navigate('/', {
+            state: {},
+          });
         }}
       >
         Make YourSelf
